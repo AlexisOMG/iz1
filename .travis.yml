@@ -17,11 +17,6 @@ before_script:
         export PATH="${PWD}/bin:$PATH"
         popd
       fi
-    - |
-      if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo apt-get update -y
-        sudo apt-get install -y gcovr
-      fi
 
 env:
   global:
@@ -61,10 +56,14 @@ matrix:
         - valgrind -q ./test/mergeSort_tests
         - cd ..
         - rm -rf build
+
+
     - os: linux
       env:
         - TEST='Coverage'
       script:
+        - sudo apt-get install python3-pip
+        - pip3 install gcovr
         - mkdir build
         - cd build/
         - cmake -DCMAKE_BUILD_TYPE=Coverage ..
@@ -73,6 +72,7 @@ matrix:
         - gcovr -r .  --gcov-executable gcov -f '../src/' -e '../src/main.c'
         - cd ..
         - rm -rf build
+
     - os: linux
       env:
         - TEST="Cppcheck"
@@ -81,6 +81,6 @@ matrix:
         - cd build/
         - cmake -DENABLE_CPPCHECK=ON -DCMAKE_C_COMPILER="gcc" ..
         - make
-        - make check -q
+        - make check
         - cd ..
         - rm -rf build

@@ -17,6 +17,11 @@ before-script:
         export PATH="${PWD}/bin:$PATH"
         popd
       fi
+    - |
+      if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+        sudo apt install python3-pip
+        pip3 install gcovr
+      fi
 
 env:
   global:
@@ -53,7 +58,7 @@ matrix:
         - cmake ..
         - make
         - valgrind -q ./test/results_tests
-        - valgrind -1 ./test/mergeSort_tests
+        - valgrind -q ./test/mergeSort_tests
         - cd ..
         - rm -rf build
     - os: linux

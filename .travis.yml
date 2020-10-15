@@ -17,11 +17,11 @@ before_script:
         export PATH="${PWD}/bin:$PATH"
         popd
       fi
-    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo apt-get update && sudo apt-get -y upgrade
-        sudo apt-get install python-pip
-        pip install gcovr
-      fi
+    # - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+    #     sudo apt-get update && sudo apt-get -y upgrade
+    #     sudo apt-get install python-pip
+    #     pip install gcovr
+    #   fi
 
 env:
   global:
@@ -63,18 +63,18 @@ matrix:
         - rm -rf build
 
 
-    - os: linux
-      env:
-        - TEST='Coverage'
-      script:
-        - mkdir build
-        - cd build/
-        - cmake -DCMAKE_BUILD_TYPE=Coverage ..
-        - make
-        - make iz1_1_coverage
-        - gcovr -r .  --gcov-executable gcov -f '../src/' -e '../src/main.c'
-        - cd ..
-        - rm -rf build
+    # - os: linux
+    #   env:
+    #     - TEST='Coverage'
+    #   script:
+    #     - mkdir build
+    #     - cd build/
+    #     - cmake -DCMAKE_BUILD_TYPE=Coverage ..
+    #     - make
+    #     - make iz1_1_coverage
+    #     - gcovr -r .  --gcov-executable gcov -f '../src/' -e '../src/main.c'
+    #     - cd ..
+    #     - rm -rf build
 
     - os: linux
       env:

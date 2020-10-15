@@ -6,7 +6,7 @@ language:   cpp
 compiler:
     - gcc
 
-before-script:
+before_script:
     - |
       if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
         mkdir -p external/cmake

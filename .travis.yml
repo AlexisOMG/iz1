@@ -19,8 +19,8 @@ before_script:
       fi
     - |
       if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo apt install python3-pip
-        pip3 install gcovr
+        apt install python-pip
+        pip install gcovr
       fi
 
 env:

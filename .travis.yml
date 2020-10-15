@@ -18,12 +18,9 @@ before_script:
         popd
       fi
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo add-apt-repository ppa:jonathonf/python-3.6
-        sudo apt update
-        sudo apt install python3.6
-        curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-        python3.6 get-pip.py --user
-        pip3 install gcovr
+        sudo apt-get update && sudo apt-get -y upgrade
+        sudo apt-get install python-pip
+        pip install gcovr
       fi
 
 env:

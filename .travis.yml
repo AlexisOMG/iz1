@@ -19,8 +19,12 @@ before_script:
       fi
     - |
       if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo apt-get update
-        sudo apt-get install python3.6
+        wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
+        tar -xvf Python-3.6.3.tgz
+        cd Python-3.6.3
+        sudo ./configure --enable-optimizations
+        sudo make -j8
+        sudo make install
         python3.6 pip install gcovr
       fi
 

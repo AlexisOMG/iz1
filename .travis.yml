@@ -62,8 +62,8 @@ matrix:
       env:
         - TEST='Coverage'
       script:
-        - sudo add-apt-repository ppa:jonathonf/python-3.6
-        - echo $'\n'
+        - echo -ne '\n' | sudo add-apt-repository ppa:jonathonf/python-3.6
+        - sudo add-apt-repository ppa:jonathonf/python-3.6 --sk
         - sudo apt-get update
         - sudo apt install python3.6
         - python3.6 pip install gcovr

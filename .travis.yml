@@ -62,7 +62,7 @@ matrix:
       env:
         - TEST='Coverage'
       script:
-        - sudo apt-get install python3.5
+        - sudo apt-get install python3.6
         - sudo apt-get install pytnon3-pip
         - pip3 install gcovr
         - mkdir build

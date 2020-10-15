@@ -62,7 +62,7 @@ matrix:
       env:
         - TEST='Coverage'
       script:
-        - gpg --keyserver subkeys.pgp.net --recv 78BD65473CB3BD13
+        - gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 78BD65473CB3BD13
         - gpg --export --armor 78BD65473CB3BD13 | sudo apt-key add -
         - sudo apt-get update
         - echo -ne '\n' | sudo add-apt-repository ppa:deadsnakes/ppa

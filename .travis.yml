@@ -17,14 +17,6 @@ before_script:
         export PATH="${PWD}/bin:$PATH"
         popd
       fi
-    - |
-      if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-        sudo apt-get update && sudo apt-get upgrade
-        sudo apt-get install python3.5
-        sudo apt-get install python3-pip
-        pip3 install -U pip
-        pip3 install gcovr
-      fi
 
 env:
   global:
@@ -70,6 +62,9 @@ matrix:
       env:
         - TEST='Coverage'
       script:
+        - sudo apt-get install python3.5
+        - sudo apt-get install pytnon3-pip
+        - pip3 install gcovr
         - mkdir build
         - cd build/
         - cmake -DCMAKE_BUILD_TYPE=Coverage ..

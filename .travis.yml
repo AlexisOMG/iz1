@@ -68,7 +68,8 @@ matrix:
         - echo -ne '\n' | sudo add-apt-repository ppa:deadsnakes/ppa
         - sudo apt-get update
         - sudo apt install python3.6
-        - python3.6 -m pip3 install gcovr
+        - curl https://bootstrap.pypa.io/get-pip.py | python3.6 - --user
+        - python3.6 -m pip install gcovr
         - mkdir build
         - cd build/
         - cmake -DCMAKE_BUILD_TYPE=Coverage ..

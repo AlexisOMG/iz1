@@ -64,7 +64,8 @@ matrix:
       script:
         - gpg --keyserver subkeys.pgp.net --recv 78BD65473CB3BD13
         - gpg --export --armor 78BD65473CB3BD13 | sudo apt-key add -
-        - echo -ne '\n' | sudo add-apt-repository ppa:jonathonf/python-3.6
+        - sudo apt-get update
+        - echo -ne '\n' | sudo add-apt-repository ppa:deadsnakes/ppa
         - sudo apt-get update
         - sudo apt install python3.6
         - python3.6 pip install gcovr
